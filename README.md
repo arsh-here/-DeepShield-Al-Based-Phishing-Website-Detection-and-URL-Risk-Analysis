@@ -125,3 +125,6 @@ Do not open the HTML using `file://`.
 - Never commit SMTP credentials, app passwords, secret keys or the SQLite database to GitHub.
 - The current URL detection logic in `script.js` is still a **demo heuristic**, not a trained ML model. It does not truly inspect SSL certificates, DNS, WHOIS/domain age, page content or browser behavior. Connect the trained model to a backend inference endpoint before describing scan results as real ML predictions.
 - The scanner's frontend result is submitted to the backend for report generation and history. For production, the backend must perform the scan itself and calculate the score rather than trusting a browser-supplied score.
+## Project Architecture
+
+![DeepShield Architecture](assets/fyp.png)
