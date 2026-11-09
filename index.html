@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepShield — AI Phishing Detection</title>
+  <link rel="icon" type="image/png" href="assets/deepshield-emblem.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><img src="assets/deepshield-emblem.png" alt="DeepShield emblem"></div>
+        <div><strong>DeepShield</strong><span>AI Security Platform</span></div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" href="#dashboard"><span>⌂</span> Dashboard</a>
+        <a class="nav-item" href="#scanner"><span>⌕</span> URL Scanner</a>
+        <a class="nav-item" href="#reports"><span>◈</span> AI Reports</a>
+        <a class="nav-item" href="#history"><span>◷</span> Scan History</a>
+        <a class="nav-item" href="#extension"><span>⬢</span> Browser Extension</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+          <span class="theme-toggle-icon" id="themeToggleIcon">☀</span>
+          <span class="theme-toggle-copy">
+            <strong id="themeToggleTitle">Light appearance</strong>
+            <small id="themeToggleHint">Switch from dark theme</small>
+          </span>
+          <span class="theme-switch-track" aria-hidden="true"><i></i></span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SECURITY CENTER</p>
+          <h1 id="welcomeHeading">Welcome, cyber explorer.</h1>
+          <p class="muted" id="welcomeSubtitle">Every link has a story. Let’s make sure yours is safe.</p>
+        </div>
+        <div class="top-actions">
+          <button class="avatar account-trigger" id="accountButton" type="button" aria-label="Log in or create an account">Login</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="hero-grid">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="pill blue">AI-POWERED PROTECTION</span>
+            <h2>Detect phishing<br><span>before it hurts.</span></h2>
+            <p>DeepShield analyzes URL structure, domain reputation, SSL, page content and behavioral signals to identify suspicious websites.</p>
+            <a href="#scanner" class="primary-btn">Scan a URL <span>→</span></a>
+          </div>
+          <div class="radar" aria-hidden="true">
+            <div class="radar-ring r1"></div>
+            <div class="radar-ring r2"></div>
+            <div class="radar-ring r3"></div>
+            <div class="radar-line"></div>
+            <div class="radar-dot d1"></div>
+            <div class="radar-dot d2"></div>
+            <div class="radar-core">DS</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <span class="metric-icon green">✓</span>
+          <div><small>URLs scanned</small><strong>—</strong><em>Connect scan database</em></div>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon red">!</span>
+          <div><small>Threats blocked</small><strong>—</strong><em class="danger">Connect scan database</em></div>
+        </div>
+        <div class="metric-card">
+          <span class="metric-icon purple">AI</span>
+          <div><small>Model confidence</small><strong>—</strong><em>After ML model training</em></div>
+        </div>
+      </section>
+
+      <section id="scanner" class="section">
+        <div class="section-heading">
+          <div><p class="eyebrow">LIVE ANALYSIS</p><h2>URL Risk Scanner</h2></div>
+          <span class="secure-badge">● Secure analysis</span>
+        </div>
+
+        <div class="scanner-card">
+          <div class="url-row">
+            <div class="url-input-wrap"><span>⌕</span><input id="urlInput" value="https://example.com/login" aria-label="URL to scan"></div>
+            <button id="scanBtn" class="scan-btn">Analyze URL <span>→</span></button>
+          </div>
+          <div class="scan-options">
+            <span>Deep scan enabled</span><span>•</span><span>SSL</span><span>•</span><span>Domain</span><span>•</span><span>Content</span><span>•</span><span>Behavior</span>
+          </div>
+          <div id="scanResult" class="scan-result hidden">
+            <div class="result-status"><div class="result-icon">✓</div><div><small>ANALYSIS COMPLETE</small><h3>Low Risk — Likely Legitimate</h3></div><strong>8 / 100</strong></div>
+            <div class="risk-bar"><span></span></div>
+            <div class="signals">
+              <div><span class="signal-ok">✓</span><b>SSL certificate</b><small id="sslSignal">Demo check only</small></div>
+              <div><span class="signal-ok">✓</span><b>Domain age</b><small id="domainSignal">Not checked</small></div>
+              <div><span class="signal-ok">✓</span><b>URL structure</b><small id="urlSignal">Analyzed</small></div>
+              <div><span class="signal-ok">✓</span><b>Page behavior</b><small id="behaviorSignal">Not checked</small></div>
+            </div>
+            <p class="scan-disclaimer">Demo scan only: connect your trained ML backend before treating results as a real security assessment.</p>
+
+          </div>
+            <div class="report-email-box">
+              <div class="report-email-icon">PDF</div>
+              <div class="report-email-copy">
+                <span>CYBER INTELLIGENCE REPORT</span>
+                <h4>Get your branded security report</h4>
+                <p>Scan a website first, then email the branded report or download its PDF directly. No account is required.</p>
+              </div>
+              <div class="report-actions">
+                <form id="emailForm" class="report-email-form">
+                  <input id="reportEmail" type="email" disabled placeholder="Enter your email address" aria-label="Email address" required>
+                  <button id="sendReportButton" type="submit" disabled>Send report ↗</button>
+                </form>
+                <button id="downloadPdfButton" class="download-direct" type="button" disabled>Download PDF ↓</button>
+              </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="reports" class="content-grid">
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">EXPLAINABLE AI</p><h3>Latest AI Report</h3></div><button class="ghost-btn">View report →</button></div>
+          <div class="report-main">
+            <div class="score-ring"><div><b>74</b><small>/100</small></div></div>
+            <div><span class="pill red">HIGH RISK</span><h4>Suspicious login portal detected</h4><p class="muted">The model found several indicators commonly associated with credential-harvesting pages.</p></div>
+          </div>
+          <div class="factor">
+            <div><span>Suspicious URL pattern</span><b>+24</b></div><div class="factor-bar"><i style="width:82%"></i></div>
+            <div><span>Domain reputation</span><b>+21</b></div><div class="factor-bar"><i style="width:70%"></i></div>
+            <div><span>Page content similarity</span><b>+17</b></div><div class="factor-bar"><i style="width:58%"></i></div>
+          </div>
+        </div>
+
+        <div class="panel" id="history">
+          <div class="panel-head"><div><p class="eyebrow">ACTIVITY</p><h3>Recent scans</h3></div><button class="ghost-btn" id="viewAllScansButton" type="button">All scans →</button></div>
+          <div class="scan-list" id="dashboardScanList">
+            <p class="empty-history">Your recent scans will appear here. Log in to keep a history across visits.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="extension" class="extension-card">
+        <div class="extension-icon"><img src="assets/deepshield-emblem.png" alt="DeepShield security emblem"></div>
+        <div><p class="eyebrow">BROWSER EXTENSION</p><h3>Get protection while you browse.</h3><p class="muted">DeepShield can warn you before a suspicious website loads, with an instant explanation of the detected risk.</p></div>
+        <button class="secondary-btn">Install extension ↗</button>
+      </section>
+
+      <footer>
+        <span>© 2026 DeepShield</span>
+        <span>AI-assisted cybersecurity • Explainable threat detection</span>
+        <span class="support-link">Need help? <a href="mailto:HelpHere@iul">HelpHere@iul</a></span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- OPTIONAL ACCOUNT PANEL: scanning remains available without login -->
+  <div class="account-overlay hidden" id="accountOverlay" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+    <section class="account-panel">
+      <button class="account-close" id="closeAccount" type="button" aria-label="Close account panel">×</button>
+
+      <div class="account-brand">
+        <div class="brand-mark"><img src="assets/deepshield-emblem.png" alt="DeepShield emblem"></div>
+        <div><strong>DeepShield</strong><span>Personal security space</span></div>
+      </div>
+
+      <div id="authView">
+        <p class="eyebrow">OPTIONAL ACCOUNT</p>
+        <h2 id="accountTitle">Your security workspace</h2>
+        <p class="account-intro">You can scan websites without signing in. Create an account only if you want your scan history saved and available later.</p>
+
+        <div class="auth-tabs">
+          <button id="showLogin" class="auth-tab active" type="button">Log in</button>
+          <button id="showRegister" class="auth-tab" type="button">Create account</button>
+        </div>
+
+        <form id="loginForm" class="account-form">
+          <p class="form-message hidden" id="loginMessage" role="alert"></p>
+          <label>Email address<input id="loginEmail" type="email" placeholder="you@example.com" required></label>
+          <label>Password<input id="loginPassword" type="password" placeholder="Your password" required></label>
+          <button class="account-submit" type="submit">Log in →</button>
+        </form>
+
+        <form id="registerForm" class="account-form hidden">
+          <p class="form-message hidden" id="registerMessage" role="alert"></p>
+          <label>Full name<input id="registerName" type="text" maxlength="100" placeholder="Your name" required></label>
+          <label>Country<select id="registerCountry" required><option value="" disabled selected>Select your country</option></select></label>
+          <label>Email address<input id="registerEmail" type="email" placeholder="you@example.com" required></label>
+          <label>Create password<input id="registerPassword" type="password" minlength="8" placeholder="At least 8 characters" required></label>
+          <button class="account-submit" type="submit">Create my account →</button>
+        </form>
+
+        <p class="guest-note">Just visiting? <button id="continueGuest" type="button">Continue as guest</button></p>
+      </div>
+
+      <div id="profileView" class="hidden">
+        <p class="eyebrow">YOUR ACCOUNT</p>
+        <h2 id="profileHeading">Your profile</h2>
+        <div class="profile-details">
+          <div><small>NAME</small><strong id="profileName">—</strong></div>
+          <div><small>COUNTRY</small><strong id="profileCountry">—</strong></div>
+          <div><small>EMAIL</small><strong id="profileEmail">—</strong></div>
+        </div>
+        <div class="history-heading">
+          <div><p class="eyebrow">YOUR ACTIVITY</p><h3>Previous URL scans</h3></div>
+          <span id="historyCount">0 scans</span>
+        </div>
+        <div id="accountHistory" class="account-history">
+          <p class="empty-history">Your saved scans will appear here.</p>
+        </div>
+        <button id="logoutButton" class="logout-button" type="button">Log out</button>
+      </div>
+    </section>
+  </div>
+  <div class="report-toast hidden" id="reportToast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
